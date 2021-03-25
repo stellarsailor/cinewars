@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+import StarDestroyer from './components/StarDestroyer';
 import useList from './hooks/useList';
 import Character from './pages/Character';
 import Main from './pages/Main';
+import AppLayout from './components/AppLayout';
 
 function App() {
   const { list, status, initialFetch } = useList();
@@ -18,12 +21,14 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact>
-          <Main />
-        </Route>
-        <Route path="/character/:id">
-          <Character />
-        </Route>
+        <AppLayout>
+          <Route path="/" exact>
+            <Main />
+          </Route>
+          <Route path="/character/:id">
+            <Character />
+          </Route>
+        </AppLayout>
       </Switch>
     </Router>
   );

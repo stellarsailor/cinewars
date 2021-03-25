@@ -1,4 +1,8 @@
+import { Row, Col } from "react-grid-system";
 import { Link } from "react-router-dom"
+import styled from "styled-components";
+import List from "../../components/List";
+import TextBox from "../../components/TextBox";
 import useList from "../../hooks/useList"
 
 export type MainProps = {}
@@ -12,21 +16,42 @@ function Main({}: MainProps) {
   }
 
   return (
-    <div>
-      {list.characters && list.characters.length !== 0 && list.characters.map( (v: any, index: number) => (
-        <Link to={`/character/${parseInt(v.url.slice(28))}`} key={v.url}>
-          <div>
-            {v.name}
-          </div>
-        </Link>
-      ))}
-      <div>
-        <div onClick={list.page === 1 ? () => {} : () => onSetPage(list.page - 1)}>prev</div>
-        {list.page}
-        <div onClick={list.characters.length < 10 ? () => {} : () => onSetPage(list.page + 1)}>next</div>
-      </div>
-    </div>
+    <Container>
+      <ListContainer>
+        <Row justify="center" nogutter>
+          <Col xs={11} sm={11} md={10} lg={8}>
+            <List />
+          </Col>
+        </Row>
+      </ListContainer>
+      <TextBoxContainer>
+        <Row justify="center" nogutter>
+          <Col xs={11} sm={11} md={10} lg={8}>
+            <TextBox 
+              content="string"
+            />
+          </Col>
+        </Row>
+      </TextBoxContainer>
+    </Container>
   )
 }
+
+const Container = styled.div`
+  z-index: 10;
+`
+
+const ListContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 50vh;
+`
+
+const TextBoxContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  bottom: 2rem;
+  z-index: 10;
+`
 
 export default Main
