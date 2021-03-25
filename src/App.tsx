@@ -6,6 +6,7 @@ import useList from './hooks/useList';
 import Character from './pages/Character';
 import Main from './pages/Main';
 import AppLayout from './components/AppLayout';
+import Loader from './components/Loader';
 
 function App() {
   const { list, status, initialFetch } = useList();
@@ -14,13 +15,10 @@ function App() {
     initialFetch(list.page)
   },[])
 
-  if(status === 'pending'){
-    return <div>loading...</div>
-  }
-
   return (
     <Router>
       <Switch>
+        {status === 'pending' && <Loader />}
         <AppLayout>
           <Route path="/" exact>
             <Main />

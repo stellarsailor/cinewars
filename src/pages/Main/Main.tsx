@@ -2,6 +2,7 @@ import { Row, Col } from "react-grid-system";
 import { Link } from "react-router-dom"
 import styled from "styled-components";
 import List from "../../components/List";
+import Loader from "../../components/Loader";
 import TextBox from "../../components/TextBox";
 import useList from "../../hooks/useList"
 
@@ -11,9 +12,9 @@ function Main({}: MainProps) {
 
   const { list, status, onSetPage } = useList();
 
-  if(status === 'pending') {
-    return <div>loading..</div>
-  }
+  // if(true || status === 'pending') {
+  //   return <Loader />
+  // }
 
   return (
     <Container>
@@ -21,6 +22,7 @@ function Main({}: MainProps) {
         <Row justify="center" nogutter>
           <Col xs={11} sm={11} md={10} lg={8}>
             <List />
+            {/* <Loader /> */}
           </Col>
         </Row>
       </ListContainer>
