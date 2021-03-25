@@ -18,7 +18,9 @@ function DialogBox({ content }: DialogBoxProps) {
             transition={{ delay: 0.5, duration: 0.5 }}
           >
             <ScriptBox>
-              <img src="/images/stormtrooper.png" style={{width: 'auto', height: '15rem', position: 'relative', marginTop: '-5rem'}} />
+              <ImageWrapper>
+                <img src="/images/stormtrooper.png" style={{width: 'auto', height: '100%', position: 'relative'}} />
+              </ImageWrapper>
               <ScriptTextBox 
                 key={content} 
                 //need key in text span to re-render when content is changed
@@ -40,6 +42,10 @@ const TextBoxContainer = styled(motion.div)`
   width: 100%;
   bottom: 2rem;
   z-index: 10;
+
+  @media (max-width: 768px) {
+    bottom: 4rem;
+  }
 `
 
 const MotionWrapper = styled(motion.div)`
@@ -52,6 +58,16 @@ const MotionWrapper = styled(motion.div)`
   z-index: 10;
 `
 
+const ImageWrapper = styled.div`
+  height: 15rem;
+  margin-top: -5rem;
+
+  @media (max-width: 768px) {
+    height: 8rem;
+    margin-top: -2rem;
+  }
+`
+
 const ScriptBox = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
   border: 1px solid rgba(88, 88, 88, 0.8);
@@ -59,12 +75,21 @@ const ScriptBox = styled.div`
   height: 10rem;
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    height: 6rem;
+  }
 `
 
 const ScriptTextBox = styled.div`
   padding: 1rem;
   font-size: 1.2rem;
   font-family: Electrolize;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
 `
 
 export default DialogBox
