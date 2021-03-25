@@ -6,19 +6,19 @@ export type LoaderProps = {}
 function Loader({}: LoaderProps) {
   return (
     <Container>
-      <img src="/images/loader.png" />
+      <img src="/images/loader.png" width="40px" height="40px" />
     </Container>
   )
 }
 
 const Container = styled.div`
-   position: fixed;
-    top: calc(50% - 25px);
-    left: calc(50% - 25px);
-    transform: translate(-50%, -50%);
-    transform: -webkit-translate(-50%, -50%);
-    transform: -moz-translate(-50%, -50%);
-    transform: -ms-translate(-50%, -50%);
+  position: fixed;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  transform: translate(-50%, -50%);
+  transform: -webkit-translate(-50%, -50%);
+  transform: -moz-translate(-50%, -50%);
+  transform: -ms-translate(-50%, -50%);
   z-index: 10;
 
   animation-name: spin;
