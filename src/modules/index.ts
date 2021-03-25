@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import list from './list';
+import dialog from './dialog'
 
 const rootReducer = combineReducers({
-  list
+  list,
+  dialog
 });
 
 export default rootReducer;

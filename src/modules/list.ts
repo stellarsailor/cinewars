@@ -1,5 +1,7 @@
+import { CharacterProfile } from "../types/CharacterProfile";
+
 // Action types - with const assertions
-const SET_PAGE = 'list/NEXT_PAGE' as const;
+const SET_PAGE = 'list/SET_PAGE' as const;
 const SET_CHARACTERS = 'list/SET_CHARACTERS' as const;
 
 // Actions
@@ -8,7 +10,7 @@ export const setPage = (page: number) => ({
   payload: page
 });
 
-export const setCharacters = (characters: any) => ({ 
+export const setCharacters = (characters: Array<CharacterProfile>) => ({ 
   type: SET_CHARACTERS,
   payload: characters
 });

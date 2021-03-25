@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
+import { serverUrl } from '../api/serverUrl';
 import { RootState } from '../modules';
 import { setPage, setCharacters } from '../modules/list'
 
@@ -11,7 +12,7 @@ export default function useList() {
 
   const onFetch = useCallback( async (page: number) => {
     setStatus('pending')
-    let url = `http://swapi.dev/api/people/?page=${page}`;
+    let url = `${serverUrl}/people/?page=${page}`;
     try {
       const res = await fetch(url)
       const data = await res.json()
