@@ -1,41 +1,47 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../modules';
-import { setPage, setStatus, fetchList } from '../modules/list'
+import { setPage, setCharacters } from '../modules/list'
 
 export default function useList() {
   const list = useSelector((state: RootState) => state.list);
   const dispatch = useDispatch();
+  
+  const [ status, setStatus ] = useState<'idle' | 'pending' | 'error'>('idle')
+
+  const onFetch = useCallback( async (page: number) => {
+    setStatus('pending')
+    let url = `http://swapi.dev/api/people/?page=${page}`;
+    try {
+      const res = await fetch(url)
+      const data = await res.json()
+
+      dispatch(setCharacters(data.results))
+      setStatus('idle')
+    } catch (err) {
+      setStatus('error')
+    }
+  }, [dispatch])
 
   const onSetPage = useCallback(
-    (page: number) => dispatch(setPage(page)), 
-    [dispatch]
+    (page: number) => { 
+      onFetch(page)
+      dispatch(setPage(page));
+    },
+    [dispatch, onFetch, list]
   );
 
-  const onFetchListBy = useCallback(
+  const initialFetch = useCallback(
     (page: number) => {
-      console.log('called')
-      dispatch(setStatus('loading'))
-      const onFetchFunction = async () => {
-        let url = `http://swapi.dev/api/people/?page=${page}`;
-        try {
-          const res = await fetch(url)
-          const data = await res.json()
-
-          dispatch(fetchList(data.results))
-          dispatch(setStatus(''))
-        } catch (err) {
-          console.log(err)
-        }
-      }
-      onFetchFunction()
+      onFetch(page)
     },
-    [dispatch]
+    [onFetch]
   )
 
   return {
     list,
+    status,
     onSetPage,
-    onFetchListBy,
+    initialFetch,
   };
 }

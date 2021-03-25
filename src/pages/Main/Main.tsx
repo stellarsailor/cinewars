@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import useList from "../../hooks/useList"
 
@@ -6,13 +5,9 @@ export type MainProps = {}
 
 function Main({}: MainProps) {
 
-  const { list, onSetPage, onFetchListBy } = useList();
-  
-  useEffect(() => {
-    onFetchListBy(list.page)
-  },[list.page, onFetchListBy])
+  const { list, status, onSetPage } = useList();
 
-  if(list.status === 'loading') {
+  if(status === 'pending') {
     return <div>loading..</div>
   }
 
@@ -26,9 +21,9 @@ function Main({}: MainProps) {
         </Link>
       ))}
       <div>
-        <div onClick={() => onSetPage(list.page - 1)}>prev</div>
+        <div onClick={list.page === 1 ? () => {} : () => onSetPage(list.page - 1)}>prev</div>
         {list.page}
-        <div onClick={() => onSetPage(list.page + 1)}>next</div>
+        <div onClick={list.characters.length < 10 ? () => {} : () => onSetPage(list.page + 1)}>next</div>
       </div>
     </div>
   )

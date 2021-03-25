@@ -17,13 +17,13 @@ function Character({}: CharacterProps) {
         const data = await res.json()
   
         setCharacter(data)
-      } catch (error) {
-        
+      } catch (err) {
+        console.log(err)
       }
     }
 
     initialFetch()
-  },[])
+  },[params])
 
   return (
     <div>
