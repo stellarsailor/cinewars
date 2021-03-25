@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Container, Row } from 'react-grid-system';
 import Header from '../Header';
 import StarDestroyer from '../StarDestroyer';
+import Earth from '../Earth';
 
 export type AppLayoutProps = {
   children: React.ReactNode
@@ -12,6 +13,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
     <Container fluid style={{padding: 0}}>
       <BackgroundContainer>
         <Header />
+        <Earth />
         {children}
         <StarDestroyer />
       </BackgroundContainer>

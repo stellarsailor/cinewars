@@ -65,6 +65,7 @@ const MotionWrapper = styled(motion.div)`
 const ImageWrapper = styled.div`
   height: 15rem;
   margin-top: -5rem;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     height: 8rem;
