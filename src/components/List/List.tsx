@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Loader from '../Loader'
 import ListPane from './ListPane'
 import { CharacterProfile } from '../../types/CharacterProfile'
+import { useCallback } from "react";
 
 export type ListProps = {
   list: {page: number; characters: null | Array<CharacterProfile>};
@@ -32,22 +33,34 @@ function List({
               ?
                 <Loader />
               :
-              <>
+              <Container>
                 {list.characters && list.characters.length !== 0 && list.characters.map( (v: CharacterProfile, index: number) => (
                   <ListPane character={v} key={index} />
                 ))}
                 <PaginationContainer>
-                  <PaginationButton onClick={list.page === 1 ? () => {} : () => onSetPage(list.page - 1)}>
-                    prev
+                  <PaginationButton 
+                    onClick={ () => {
+                      if(list.page === 1) return
+                      onSetPage(list.page - 1)
+                    }}
+                    disabled={list.page === 1}
+                  >
+                    Prev
                   </PaginationButton>
                   <PaginationNumber>
                     {list.page}
                   </PaginationNumber>
-                  <PaginationButton onClick={list.characters && list.characters.length < 10 ? () => {} : () => onSetPage(list.page + 1)}>
-                    next
+                  <PaginationButton 
+                    onClick={ () => {
+                      if(list.characters && list.characters.length < 10 ) return
+                      onSetPage(list.page + 1)
+                    }}
+                    disabled={list.characters && list.characters.length < 10}
+                  >
+                    Next
                   </PaginationButton>
                 </PaginationContainer>
-              </>
+              </Container>
             }
           </MotionWrapper>
         </Col>
@@ -72,21 +85,35 @@ const MotionWrapper = styled(motion.div)`
   z-index: 10;
 `
 
+const Container = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+`
+
 const PaginationContainer = styled.div`
   width: 100%;
+  position: absolute;
+  bottom: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
 `
 
 const PaginationNumber = styled.span`
   margin: 0px 1rem;
 `
 
-const PaginationButton = styled.span`
-  cursor: pointer;
+export interface PaginationButtonProps {
+  disabled: null | boolean;
+}
+
+const PaginationButton = styled.span<PaginationButtonProps>`
+  cursor: ${props => props.disabled ? null : 'pointer'};
+  color: ${props => props.disabled ? 'gray' : 'white'};
   &:hover{
-    color: var(--official-yellow);
+    color: ${props => props.disabled ? null : 'var(--official-yellow)'};
   }
 `
 
