@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react"
-import { useHistory, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import styled from "styled-components"
 import { serverUrl } from "../../api/serverUrl"
+import CharacterDetail from "../../components/CharacterDetail"
+import DialogBox from "../../components/DialogBox"
+import useDialog from "../../hooks/useDialog"
 import { CharacterProfile } from "../../types/CharacterProfile"
 
 export type CharacterProps = {}
 
 function Character({}: CharacterProps) {
-  let params: any = useParams()
-  const history = useHistory()
+
+  const params: any = useParams()
+  const { dialog, onSetDialog } = useDialog();
 
   const [ character, setCharacter ] = useState<null | CharacterProfile>(null)
 
@@ -18,6 +23,7 @@ function Character({}: CharacterProps) {
         const res = await fetch(url)
         const data = await res.json()
   
+        onSetDialog('His/her name is ' + data.name + ' and ...')
         setCharacter(data)
       } catch (err) {
         console.log(err)
@@ -28,14 +34,19 @@ function Character({}: CharacterProps) {
   },[params])
 
   return (
-    <div>
-      {character && 
-        <div>
-          {character.name} {character.height}
-        </div>}
-      <div onClick={() => history.goBack()}>Back</div>
-    </div>
+    <Container>
+      <CharacterDetail
+        character={character}
+      />
+      <DialogBox
+        content={dialog.text}
+      />
+    </Container>
   )
 }
+
+const Container = styled.div`
+  z-index: 10;
+`
 
 export default Character

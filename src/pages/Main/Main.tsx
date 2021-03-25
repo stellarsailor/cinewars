@@ -1,40 +1,32 @@
-import { Row, Col } from "react-grid-system";
-import { Link } from "react-router-dom"
+import { motion } from "framer-motion"
 import styled from "styled-components";
 import List from "../../components/List";
-import Loader from "../../components/Loader";
-import TextBox from "../../components/TextBox";
+import DialogBox from "../../components/DialogBox";
 import useList from "../../hooks/useList"
+import { useEffect, useState } from "react";
+import useDialog from "../../hooks/useDialog";
 
 export type MainProps = {}
 
 function Main({}: MainProps) {
 
   const { list, status, onSetPage } = useList();
+  const { dialog, onSetDialog } = useDialog();
 
-  // if(true || status === 'pending') {
-  //   return <Loader />
-  // }
+  useEffect(() => {
+    onSetDialog('The database is now ready, sir! Who are you looking for?')
+  },[])
 
   return (
     <Container>
-      <ListContainer>
-        <Row justify="center" nogutter>
-          <Col xs={11} sm={11} md={10} lg={8}>
-            <List />
-            {/* <Loader /> */}
-          </Col>
-        </Row>
-      </ListContainer>
-      <TextBoxContainer>
-        <Row justify="center" nogutter>
-          <Col xs={11} sm={11} md={10} lg={8}>
-            <TextBox 
-              content="string"
-            />
-          </Col>
-        </Row>
-      </TextBoxContainer>
+      <List 
+        list={list}
+        status={status}
+        onSetPage={onSetPage}
+      />
+      <DialogBox 
+        content={dialog.text}
+      />
     </Container>
   )
 }
@@ -43,17 +35,5 @@ const Container = styled.div`
   z-index: 10;
 `
 
-const ListContainer = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 50vh;
-`
-
-const TextBoxContainer = styled.div`
-  position: absolute;
-  width: 100%;
-  bottom: 2rem;
-  z-index: 10;
-`
 
 export default Main
