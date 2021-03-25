@@ -2,12 +2,16 @@ import styled from 'styled-components'
 import { motion } from "framer-motion"
 import { Row, Col } from "react-grid-system";
 import Typist from 'react-typist'
+import useDialog from '../../hooks/useDialog';
 
 export type DialogBoxProps = {
   content: string;
 }
 
 function DialogBox({ content }: DialogBoxProps) {
+
+  const { onSetDialog } = useDialog();
+
   return (
     <TextBoxContainer>
       <Row justify="center" nogutter>
@@ -18,7 +22,7 @@ function DialogBox({ content }: DialogBoxProps) {
             transition={{ delay: 0.5, duration: 0.5 }}
           >
             <ScriptBox>
-              <ImageWrapper>
+              <ImageWrapper onClick={() => onSetDialog("D...Do not touch me, sir.")}>
                 <img src="/images/stormtrooper.png" style={{width: 'auto', height: '100%', position: 'relative'}} />
               </ImageWrapper>
               <ScriptTextBox 
