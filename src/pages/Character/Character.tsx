@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import { useHistory, useParams } from 'react-router-dom'
+import { serverUrl } from "../../api/serverUrl"
+import { CharacterProfile } from "../../types/CharacterProfile"
 
 export type CharacterProps = {}
 
@@ -7,11 +9,11 @@ function Character({}: CharacterProps) {
   let params: any = useParams()
   const history = useHistory()
 
-  const [ character, setCharacter ] = useState<any>(null)
+  const [ character, setCharacter ] = useState<null | CharacterProfile>(null)
 
   useEffect(() => {
     const initialFetch = async () => {
-      let url = `https://swapi.dev/api/people/${params.id}`
+      let url = `${serverUrl}/people/${params.id}`
       try {
         const res = await fetch(url)
         const data = await res.json()
