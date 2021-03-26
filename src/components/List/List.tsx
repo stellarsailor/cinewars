@@ -37,15 +37,19 @@ function List({
               :
               <Container>
                 <table>
-                  <tr>
-                    <Th>Name</Th>
-                    <Th>Birth</Th>
-                    <Th>Height</Th>
-                    <Th>Mass</Th>
-                  </tr>
-                  {list.characters && list.characters.length !== 0 && list.characters.map( (v: CharacterProfile, index: number) => (
-                    <ListPane character={v} key={index} />
-                  ))}
+                  <thead>
+                    <tr>
+                      <Th>Name</Th>
+                      <Th>Birth</Th>
+                      <Th>Height</Th>
+                      <Th>Mass</Th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {list.characters && list.characters.length !== 0 && list.characters.map( (v: CharacterProfile, index: number) => (
+                      <ListPane character={v} key={index} />
+                    ))}
+                  </tbody>
                 </table>
                 <PaginationContainer>
                   <PaginationButton 
