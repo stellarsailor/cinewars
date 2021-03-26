@@ -34,9 +34,17 @@ function List({
                 <Loader />
               :
               <Container>
-                {list.characters && list.characters.length !== 0 && list.characters.map( (v: CharacterProfile, index: number) => (
-                  <ListPane character={v} key={index} />
-                ))}
+                <table>
+                  <tr>
+                    <Th>Name</Th>
+                    <Th>Birth</Th>
+                    <Th>Height</Th>
+                    <Th>Mass</Th>
+                  </tr>
+                  {list.characters && list.characters.length !== 0 && list.characters.map( (v: CharacterProfile, index: number) => (
+                    <ListPane character={v} key={index} />
+                  ))}
+                </table>
                 <PaginationContainer>
                   <PaginationButton 
                     onClick={ () => {
@@ -45,7 +53,7 @@ function List({
                     }}
                     disabled={list.page === 1}
                   >
-                    Prev
+                    {`<`} Prev
                   </PaginationButton>
                   <PaginationNumber>
                     {list.page}
@@ -57,7 +65,7 @@ function List({
                     }}
                     disabled={list.characters && list.characters.length < 10}
                   >
-                    Next
+                    Next {`>`}
                   </PaginationButton>
                 </PaginationContainer>
               </Container>
@@ -89,20 +97,21 @@ const Container = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* align-items: center; */
+  padding-top: 1rem;
 `
 
 const PaginationContainer = styled.div`
   width: 100%;
   position: absolute;
-  bottom: 0;
+  bottom: 1rem;
   display: flex;
   justify-content: center;
 `
 
 const PaginationNumber = styled.span`
   margin: 0px 1rem;
+  font-weight: bold;
+  color: var(--official-yellow);
 `
 
 export interface PaginationButtonProps {
@@ -114,6 +123,13 @@ const PaginationButton = styled.span<PaginationButtonProps>`
   color: ${props => props.disabled ? 'gray' : 'white'};
   &:hover{
     color: ${props => props.disabled ? null : 'var(--official-yellow)'};
+  }
+`
+
+const Th = styled.th`
+  font-size: 1.5rem;
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
   }
 `
 
