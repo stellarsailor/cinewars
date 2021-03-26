@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components'
 import { motion } from "framer-motion"
 import { Row, Col } from "react-grid-system";
@@ -5,11 +6,17 @@ import { CharacterProfile } from '../../types/CharacterProfile';
 import { useHistory } from 'react-router';
 
 export type CharacterDetailProps = {
-  character: null | CharacterProfile
+  id: number,
+  character: null | CharacterProfile,
 }
 
-function CharacterDetail({ character }: CharacterDetailProps) {
+function CharacterDetail({ 
+  id,
+  character
+}: CharacterDetailProps) {
+
   const history = useHistory()
+  const [ imageLoading, setImageLoading ] = useState<boolean>(true)
 
   return (
     <DetailContainer>
@@ -27,16 +34,15 @@ function CharacterDetail({ character }: CharacterDetailProps) {
                 </BackButtonTab>
                 <Row nogutter>
                   <Col xs={12} sm={12} md={6} lg={6}>
-                    {/* TODO: female male divide*/}
                     <PortraitContainer>
                       <ImageWrapper>
-                        <img src={`/images/${
-                          character.gender === 'male' 
-                          ? 'male' 
-                          : character.gender === 'female' 
-                            ? 'female'
-                            : 'etc'
-                        }.jpg`} style={{width: 'auto', height: '100%', position: 'relative'}} />
+                        { imageLoading && <ImageSkeleton /> }
+                        <img 
+                          src={`/images/characters/${id}.jpg`} 
+                          style={{width: 'auto', height: '100%', position: 'relative'}} 
+                          onLoad={() => setImageLoading(false)} 
+                          onError={(e) => console.log(e)}
+                        />
                       </ImageWrapper>
                       <PortraitNameContainer>
                         {character.name}
@@ -151,6 +157,13 @@ const ImageWrapper = styled.div`
     width: 100px;
     height: 100px;
   }
+`
+
+const ImageSkeleton = styled.div`
+  background-color: gray;
+  width: auto;
+  height: 100%;
+  position: relative;
 `
 
 const PortraitNameContainer = styled.div`

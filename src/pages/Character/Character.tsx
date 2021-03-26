@@ -43,6 +43,7 @@ function Character({}: CharacterProps) {
   return (
     <Container>
       <CharacterDetail
+        id={params.id}
         character={character}
       />
       <DialogBox
