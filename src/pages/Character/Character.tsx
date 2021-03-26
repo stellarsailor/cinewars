@@ -7,13 +7,14 @@ import DialogBox from "../../components/DialogBox"
 import Loader from "../../components/Loader"
 import useDialog from "../../hooks/useDialog"
 import { CharacterProfile } from "../../types/CharacterProfile"
+import { composeDialog } from "./composeDialog"
 
 export type CharacterProps = {}
 
 function Character({}: CharacterProps) {
 
   const params: any = useParams()
-  const { dialog, onSetDialog } = useDialog();
+  const { dialog, onSetDialog } = useDialog()
 
   const [ character, setCharacter ] = useState<null | CharacterProfile>(null)
   const [ loading, setLoading ] = useState(false)
@@ -26,13 +27,7 @@ function Character({}: CharacterProps) {
         const res = await fetch(url)
         const data = await res.json()
 
-        let str = ''
-        if(data.gender === 'male') str += 'His '
-        if(data.gender === 'female') str += 'Her '
-        if(data.gender !== 'male' && data.gender !== 'female') str += 'Its '
-        str += 'name is <%' + data.name + '%> and has <c%' + data.hair_color + '%c> ' + '<%' + data.hair_color + '%>' + ' hair %> and  <c%' +  data.eye_color + '%c> ' + '<%' + data.eye_color + '%>' + ' eyes.'
-
-        onSetDialog(str)
+        onSetDialog(composeDialog(data))
         setCharacter(data)
         setLoading(false)
       } catch (err) {

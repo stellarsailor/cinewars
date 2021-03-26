@@ -17,7 +17,7 @@ type DialogState = {
 }
 
 const initialState: DialogState = {
-  text: 'asd'
+  text: ''
 }
 
 // Reducer

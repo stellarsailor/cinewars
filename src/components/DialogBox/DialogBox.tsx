@@ -13,22 +13,6 @@ function DialogBox({ content }: DialogBoxProps) {
 
   const { onSetDialog } = useDialog();
 
-  const makeSpanElement = (contentText: string) => {
-    let html = `<span>`
-    html += contentText
-      .replace(/<%/g, '<span style="font-weight:bold;">')
-      .replace(/%>/g, '</span>')
-      .replace(/<c%/g, '<span style="font-weight:bold; color: ')
-      .replace(/%c>/g, ';">')
-    html += `</span>`
-
-    return (
-      <span>
-        {ReactHtmlParser(html)}
-      </span>
-    )
-  }
-
   return (
     <TextBoxContainer>
       <Row justify="center" nogutter>
@@ -47,7 +31,7 @@ function DialogBox({ content }: DialogBoxProps) {
                 //need key in text span to re-render when content is changed
               >
                 <Typist startDelay={1000} cursor={{show: false}}>
-                  {makeSpanElement(content)}
+                  {ReactHtmlParser(content)}
                 </Typist>
               </ScriptTextBox>
             </ScriptBox>
