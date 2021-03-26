@@ -17,7 +17,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        {status === 'pending' && <Loader />}
+        {status === 'pending' && <Loader global />}
         <AppLayout>
           <Route path="/" exact>
             <Main />

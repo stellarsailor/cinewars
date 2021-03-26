@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { serverUrl } from "../../api/serverUrl"
 import CharacterDetail from "../../components/CharacterDetail"
 import DialogBox from "../../components/DialogBox"
+import Loader from "../../components/Loader"
 import useDialog from "../../hooks/useDialog"
 import { CharacterProfile } from "../../types/CharacterProfile"
 
@@ -15,10 +16,12 @@ function Character({}: CharacterProps) {
   const { dialog, onSetDialog } = useDialog();
 
   const [ character, setCharacter ] = useState<null | CharacterProfile>(null)
+  const [ loading, setLoading ] = useState(false)
 
   useEffect(() => {
     const initialFetch = async () => {
       let url = `${serverUrl}/people/${params.id}`
+      setLoading(true)
       try {
         const res = await fetch(url)
         const data = await res.json()
@@ -31,12 +34,16 @@ function Character({}: CharacterProps) {
 
         onSetDialog(str)
         setCharacter(data)
+        setLoading(false)
       } catch (err) {
         console.log(err)
       }
     }
     initialFetch()
   },[params])
+
+  // it should be loading indicator when character page is being loaded, but due to animation it hinders user experience.
+  if(loading) return <Loader global />
 
   return (
     <Container>

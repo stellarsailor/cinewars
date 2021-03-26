@@ -31,7 +31,9 @@ function List({
             {
               status === 'pending' 
               ?
-                <Loader />
+                <Loader
+                  global={false}
+                />
               :
               <Container>
                 <table>
