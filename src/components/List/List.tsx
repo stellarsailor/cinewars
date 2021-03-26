@@ -94,8 +94,8 @@ const MotionWrapper = styled(motion.div)`
   position: relative;
   width: 100%;
   height: 50vh;
-  background-color: rgba(0, 0, 0, 0.8);
-  border: 1px solid rgba(88, 88, 88, 0.8);
+  background-color: rgba(0, 0, 0, 0.66);
+  border: 1px solid rgba(88, 88, 88, 0.66);
   z-index: 10;
 `
 
