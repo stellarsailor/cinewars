@@ -10,7 +10,10 @@ const useAudio = () => {
   const toggle: any = () => setPlaying(!playing)
 
   useEffect(() => {
-    playing ? audio.play() : audio.pause()
+    const promise = playing ? audio.play() : audio.pause()
+    if (promise !== undefined) {
+      promise.then(() => {}).catch(error => console.error);
+    } 
   },[playing])
 
   useEffect(() => {
