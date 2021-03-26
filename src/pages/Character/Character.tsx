@@ -22,14 +22,19 @@ function Character({}: CharacterProps) {
       try {
         const res = await fetch(url)
         const data = await res.json()
-  
-        onSetDialog('His/her name is ' + data.name + ' and ...')
+
+        let str = ''
+        if(data.gender === 'male') str += 'His '
+        if(data.gender === 'female') str += 'Her '
+        if(data.gender !== 'male' && data.gender !== 'female') str += 'Its '
+        str += 'name is <%' + data.name + '%> and has <c%' + data.hair_color + '%c> ' + '<%' + data.hair_color + '%>' + ' hair %> and  <c%' +  data.eye_color + '%c> ' + '<%' + data.eye_color + '%>' + ' eyes.'
+
+        onSetDialog(str)
         setCharacter(data)
       } catch (err) {
         console.log(err)
       }
     }
-
     initialFetch()
   },[params])
 

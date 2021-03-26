@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { Row, Col } from "react-grid-system";
 import Typist from 'react-typist'
 import useDialog from '../../hooks/useDialog';
+import ReactHtmlParser from 'react-html-parser';
 
 export type DialogBoxProps = {
   content: string;
@@ -11,6 +12,22 @@ export type DialogBoxProps = {
 function DialogBox({ content }: DialogBoxProps) {
 
   const { onSetDialog } = useDialog();
+
+  const makeSpanElement = (contentText: string) => {
+    let html = `<span>`
+    html += contentText
+      .replace(/<%/g, '<span style="font-weight:bold;">')
+      .replace(/%>/g, '</span>')
+      .replace(/<c%/g, '<span style="font-weight:bold; color: ')
+      .replace(/%c>/g, ';">')
+    html += `</span>`
+
+    return (
+      <span>
+        {ReactHtmlParser(html)}
+      </span>
+    )
+  }
 
   return (
     <TextBoxContainer>
@@ -30,7 +47,7 @@ function DialogBox({ content }: DialogBoxProps) {
                 //need key in text span to re-render when content is changed
               >
                 <Typist startDelay={1000} cursor={{show: false}}>
-                  {content}
+                  {makeSpanElement(content)}
                 </Typist>
               </ScriptTextBox>
             </ScriptBox>
