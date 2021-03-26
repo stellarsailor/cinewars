@@ -13,7 +13,6 @@ export default function AppLayout({ children }: AppLayoutProps) {
   return (
     <Container fluid style={{padding: 0}}>
       <BackgroundContainer>
-        <MusicPlayer />
         <Header />
         <Earth />
         {children}
