@@ -14,10 +14,10 @@ export default function ListPane ({ character }: ListPaneProps) {
   return (
     <Tr onClick={handleOnClick}>
       {/* <Link to={`/character/${parseInt(character.url.slice(28))}`} key={character.url}> */}
-      <Td percentage="40%">{character.name}</Td>
-      <Td percentage="20%">{character.birth_year}</Td>
-      <Td percentage="20%">{character.height}</Td>
-      <Td percentage="20%">{character.mass}</Td>
+      <Td percentage="34%">{character.name}</Td>
+      <Td percentage="22%">{character.birth_year}</Td>
+      <Td percentage="22%">{character.height}</Td>
+      <Td percentage="22%">{character.mass}</Td>
       {/* </Link> */}
     </Tr>
   )
@@ -37,11 +37,11 @@ export interface TdProps {
 const Td = styled.td<TdProps>`
   text-align: center;
   width: ${props => props.percentage};
-  height: 1.5rem;
+  height: 3vh;
   font-size: 1rem;
 
   @media (max-width: 768px) {
-    height: 1rem;
-    font-size: 0.8rem;
+    height: 3vh;
+    font-size: 0.75rem;
   }
 `

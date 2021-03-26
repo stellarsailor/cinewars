@@ -129,7 +129,7 @@ const PaginationButton = styled.span<PaginationButtonProps>`
 const Th = styled.th`
   font-size: 1.5rem;
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 `
 
