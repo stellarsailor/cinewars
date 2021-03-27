@@ -8,11 +8,11 @@ import AppLayout from './components/AppLayout';
 import Loader from './components/Loader';
 
 function App() {
-  const { list, status, initialFetch } = useList();
+  const { status, initialFetch } = useList();
 
   useEffect(() => {
-    initialFetch(list.page)
-  },[])
+    initialFetch(1)
+  },[initialFetch])
 
   return (
     <Router>

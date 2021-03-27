@@ -1,11 +1,9 @@
 import { Row, Col } from "react-grid-system";
 import styled from 'styled-components'
 import { motion } from "framer-motion"
-import { Link } from 'react-router-dom'
 import Loader from '../Loader'
 import ListPane from './ListPane'
 import { CharacterProfile } from '../../types/CharacterProfile'
-import { useCallback } from "react";
 
 export type ListProps = {
   list: {page: number; characters: null | Array<CharacterProfile>};

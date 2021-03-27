@@ -1,21 +1,18 @@
-import { motion } from "framer-motion"
 import styled from "styled-components";
 import List from "../../components/List";
 import DialogBox from "../../components/DialogBox";
 import useList from "../../hooks/useList"
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useDialog from "../../hooks/useDialog";
 
-export type MainProps = {}
-
-function Main({}: MainProps) {
+function Main() {
 
   const { list, status, onSetPage } = useList();
   const { dialog, onSetDialog } = useDialog();
 
   useEffect(() => {
     onSetDialog('The database is now ready, sir! Who are you looking for?')
-  },[])
+  },[onSetDialog])
 
   return (
     <Container>

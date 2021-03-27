@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import styled from "styled-components"
 import { CharacterProfile } from "../../types/CharacterProfile"
 
@@ -8,17 +8,18 @@ export type ListPaneProps = {
 }
 
 export default function ListPane ({ character }: ListPaneProps) {
-  const history = useHistory();
-  const handleOnClick = useCallback(() => history.push(`/character/${parseInt(character.url.slice(28))}`), [history]);
+
+  const history = useHistory()
+  const handleOnClick = useCallback(() => {
+    history.push(`/character/${parseInt(character.url.slice(28))}`)
+  }, [history, character]);
 
   return (
     <Tr onClick={handleOnClick}>
-      {/* <Link to={`/character/${parseInt(character.url.slice(28))}`} key={character.url}> */}
       <Td percentage="34%">{character.name}</Td>
       <Td percentage="22%">{character.birth_year}</Td>
       <Td percentage="22%">{character.height}</Td>
       <Td percentage="22%">{character.mass}</Td>
-      {/* </Link> */}
     </Tr>
   )
 }

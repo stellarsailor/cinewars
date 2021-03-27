@@ -29,7 +29,7 @@ export default function useList() {
       onFetch(page)
       dispatch(setPage(page));
     },
-    [dispatch, onFetch, list]
+    [dispatch, onFetch]
   );
 
   const initialFetch = useCallback(

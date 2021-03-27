@@ -14,7 +14,7 @@ const useAudio = () => {
     if (promise !== undefined) {
       promise.then(() => {}).catch(error => console.error);
     } 
-  },[playing])
+  },[playing, audio])
 
   useEffect(() => {
     audio.addEventListener('ended', () => setPlaying(false));
@@ -22,7 +22,7 @@ const useAudio = () => {
     return () => {
       audio.removeEventListener('ended', () => setPlaying(false));
     }
-  },[])
+  },[audio])
 
   return [ playing, toggle ]
 }
@@ -32,11 +32,15 @@ export default function MusicPlayer () {
 
     return (
       <Container onClick={toggle}>
-        <img src={`/images/${
-          playing 
-          ? `audio_playing`
-          : `audio_pause`
-        }.png`} style={{width: '100%', height: '100%', position: 'relative'}} />
+        <img 
+          src={`/images/${
+            playing 
+            ? `audio_playing`
+            : `audio_pause`
+          }.png`} 
+          style={{width: '100%', height: '100%', position: 'relative'}} 
+          alt="music player indicator"
+        />
       </Container>
     )
 }

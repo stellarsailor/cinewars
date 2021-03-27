@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { motion } from "framer-motion"
 
 export type LoaderProps = {
   global: boolean
@@ -10,13 +9,13 @@ function Loader({ global }: LoaderProps) {
   if(global){
     return (
       <GlobalContainer>
-        <img src="/images/loader.png" width="40px" height="40px" />
+        <img src="/images/loader.png" width="40px" height="40px" alt="loader indicator" />
       </GlobalContainer>
     )
   }
   return (
     <Container>
-      <img src="/images/loader.png" width="40px" height="40px" />
+      <img src="/images/loader.png" width="40px" height="40px" alt="loader indicator" />
     </Container>
   )
 }

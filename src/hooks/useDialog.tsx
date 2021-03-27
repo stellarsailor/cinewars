@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../modules';
 import { setDialog } from '../modules/dialog';
@@ -11,7 +11,7 @@ export default function useDialog() {
     (text: string) => { 
       dispatch(setDialog(text));
     },
-    [dispatch, setDialog]
+    [dispatch]
   );
 
   return {

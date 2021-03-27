@@ -9,9 +9,7 @@ import useDialog from "../../hooks/useDialog"
 import { CharacterProfile } from "../../types/CharacterProfile"
 import { composeDialog } from "./composeDialog"
 
-export type CharacterProps = {}
-
-function Character({}: CharacterProps) {
+function Character() {
 
   const params: any = useParams()
   const { dialog, onSetDialog } = useDialog()
@@ -35,7 +33,7 @@ function Character({}: CharacterProps) {
       }
     }
     initialFetch()
-  },[params])
+  },[params, onSetDialog])
 
   // it should be loading indicator when character page is being loaded, but due to animation it hinders user experience.
   if(loading) return <Loader global />

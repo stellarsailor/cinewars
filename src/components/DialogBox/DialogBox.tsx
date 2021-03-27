@@ -24,7 +24,11 @@ function DialogBox({ content }: DialogBoxProps) {
           >
             <ScriptBox>
               <ImageWrapper onClick={() => onSetDialog("D...Do not touch me, sir.")}>
-                <img src="/images/stormtrooper.png" style={{width: 'auto', height: '100%', position: 'relative'}} />
+                <img 
+                  src="/images/stormtrooper.png" 
+                  style={{width: 'auto', height: '100%', position: 'relative'}} 
+                  alt="stormtrooper's portrait"
+                />
               </ImageWrapper>
               <ScriptTextBox 
                 key={content} 

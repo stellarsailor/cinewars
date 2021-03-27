@@ -42,6 +42,7 @@ function CharacterDetail({
                           style={{width: 'auto', height: '100%', position: 'relative'}} 
                           onLoad={() => setImageLoading(false)} 
                           onError={(e) => console.log(e)}
+                          alt="character's portrait"
                         />
                       </ImageWrapper>
                       <PortraitNameContainer>

@@ -7,11 +7,11 @@ function Header() {
     <HeaderContainder>
       <MusicPlayer />
       <Link to="/" style={{height: '75%'}}>
-        <img src="/images/logo_white.png" width="auto" height="100%" />
+        <img src="/images/logo_white.png" width="auto" height="100%" alt="main logo" />
       </Link>
       <a href="https://github.com/stellarsailor/cinewars" target="_blank" rel="noreferrer">
         <GithubLogoContainer>
-          <img src="/images/logo_github.png" width="100%" height="100%" />
+          <img src="/images/logo_github.png" width="100%" height="100%" alt="github logo" />
         </GithubLogoContainer>
       </a>
     </HeaderContainder>
