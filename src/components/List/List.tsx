@@ -64,7 +64,8 @@ function List({
                   </PaginationNumber>
                   <PaginationButton 
                     onClick={ () => {
-                      if(list.characters && list.characters.length < 10 ) return
+                      //list.characters.length !== 0 for the testing case (when there is no data at the initial page)
+                      if(list.characters && list.characters.length !== 0 && list.characters.length < 10 ) return
                       onSetPage(list.page + 1)
                     }}
                     disabled={list.characters && list.characters.length < 10}
