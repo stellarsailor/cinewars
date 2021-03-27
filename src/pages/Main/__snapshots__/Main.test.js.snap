@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Main /> matches snapshot 1`] = `
+<div>
+  <div
+    class="sc-kstrdz EPngp"
+  >
+    <div
+      class="sc-eCssSg jChMMz"
+    >
+      <div
+        style="margin-left: 0px; margin-right: 0px; display: flex; flex-wrap: wrap; flex-grow: 0; flex-shrink: 0; align-items: normal; justify-content: center;"
+      >
+        <div
+          style="box-sizing: border-box; min-height: 1px; position: relative; padding-left: 0px; padding-right: 0px; width: 66.66666666666667%; flex-basis: 66.66666666666667%; flex-grow: 0; flex-shrink: 0; max-width: 66.66666666666667%; margin-left: 0%;"
+        >
+          <div
+            class="sc-jSgupP kzWRXM"
+            style="opacity: 0; transform: translateY(20px) translateZ(0);"
+          >
+            <div
+              class="sc-gKsewC laZHNn"
+            >
+              <table>
+                <thead>
+                  <tr>
+                    <th
+                      class="sc-jrAGrp kIqfba"
+                    >
+                      Name
+                    </th>
+                    <th
+                      class="sc-jrAGrp kIqfba"
+                    >
+                      Birth
+                    </th>
+                    <th
+                      class="sc-jrAGrp kIqfba"
+                    >
+                      Height
+                    </th>
+                    <th
+                      class="sc-jrAGrp kIqfba"
+                    >
+                      Mass
+                    </th>
+                  </tr>
+                </thead>
+                <tbody />
+              </table>
+              <div
+                class="sc-iBPRYJ cvGDab"
+              >
+                <span
+                  class="sc-pFZIQ gLQjqN"
+                  disabled=""
+                >
+                  &lt;
+                   Prev
+                </span>
+                <span
+                  class="sc-fubCfw cHfayB"
+                >
+                  1
+                </span>
+                <span
+                  class="sc-pFZIQ gLQjqN"
+                  disabled=""
+                >
+                  Next 
+                  &gt;
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-kEjbxe khGPtF"
+    >
+      <div
+        style="margin-left: 0px; margin-right: 0px; display: flex; flex-wrap: wrap; flex-grow: 0; flex-shrink: 0; align-items: normal; justify-content: center;"
+      >
+        <div
+          style="box-sizing: border-box; min-height: 1px; position: relative; padding-left: 0px; padding-right: 0px; width: 66.66666666666667%; flex-basis: 66.66666666666667%; flex-grow: 0; flex-shrink: 0; max-width: 66.66666666666667%; margin-left: 0%;"
+        >
+          <div
+            class="sc-iqHYGH ihcdgJ"
+            style="opacity: 0; transform: translateY(20px) translateZ(0);"
+          >
+            <div
+              class="sc-dQppl eHjXOW"
+            >
+              <div
+                class="sc-crrsfI bYnux"
+              >
+                <img
+                  alt="stormtrooper's portrait"
+                  src="/images/stormtrooper.png"
+                  style="width: auto; height: 100%; position: relative;"
+                />
+              </div>
+              <div
+                class="sc-bqyKva kmvbgE"
+              >
+                <div
+                  class="Typist "
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
