@@ -19,6 +19,7 @@ function Character() {
 
   useEffect(() => {
     const initialFetch = async () => {
+      if(params === undefined) return
       let url = `${serverUrl}/people/${params.id}`
       setLoading(true)
       try {

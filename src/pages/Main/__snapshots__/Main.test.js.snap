@@ -3,10 +3,10 @@
 exports[`<Main /> matches snapshot 1`] = `
 <div>
   <div
-    class="sc-kstrdz EPngp"
+    class="sc-iwyYcG diVfFX"
   >
     <div
-      class="sc-eCssSg jChMMz"
+      class="sc-idOhPF lbVZAh"
     >
       <div
         style="margin-left: 0px; margin-right: 0px; display: flex; flex-wrap: wrap; flex-grow: 0; flex-shrink: 0; align-items: normal; justify-content: center;"
@@ -15,32 +15,32 @@ exports[`<Main /> matches snapshot 1`] = `
           style="box-sizing: border-box; min-height: 1px; position: relative; padding-left: 0px; padding-right: 0px; width: 66.66666666666667%; flex-basis: 66.66666666666667%; flex-grow: 0; flex-shrink: 0; max-width: 66.66666666666667%; margin-left: 0%;"
         >
           <div
-            class="sc-jSgupP kzWRXM"
+            class="sc-dIUggk jUgLus"
             style="opacity: 0; transform: translateY(20px) translateZ(0);"
           >
             <div
-              class="sc-gKsewC laZHNn"
+              class="sc-hHftDr ePQka-d"
             >
               <table>
                 <thead>
                   <tr>
                     <th
-                      class="sc-jrAGrp kIqfba"
+                      class="sc-bBXqnf kKsWNn"
                     >
                       Name
                     </th>
                     <th
-                      class="sc-jrAGrp kIqfba"
+                      class="sc-bBXqnf kKsWNn"
                     >
                       Birth
                     </th>
                     <th
-                      class="sc-jrAGrp kIqfba"
+                      class="sc-bBXqnf kKsWNn"
                     >
                       Height
                     </th>
                     <th
-                      class="sc-jrAGrp kIqfba"
+                      class="sc-bBXqnf kKsWNn"
                     >
                       Mass
                     </th>
@@ -49,22 +49,22 @@ exports[`<Main /> matches snapshot 1`] = `
                 <tbody />
               </table>
               <div
-                class="sc-iBPRYJ cvGDab"
+                class="sc-dmlrTW csAspt"
               >
                 <span
-                  class="sc-pFZIQ gLQjqN"
+                  class="sc-fKFyDc hlgfOM"
                   disabled=""
                 >
                   &lt;
                    Prev
                 </span>
                 <span
-                  class="sc-fubCfw cHfayB"
+                  class="sc-kfzAmx jIEcjh"
                 >
                   1
                 </span>
                 <span
-                  class="sc-pFZIQ gLQjqN"
+                  class="sc-fKFyDc hlgfOM"
                   disabled=""
                 >
                   Next 

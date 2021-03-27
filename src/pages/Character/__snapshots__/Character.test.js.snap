@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Character /> matches snapshot 1`] = `
+<div>
+  <div
+    class="sc-kstrdz gOReAX"
+  >
+    <img
+      alt="loader indicator"
+      height="40px"
+      src="/images/loader.png"
+      width="40px"
+    />
+  </div>
+</div>
+`;

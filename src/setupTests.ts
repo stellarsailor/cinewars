@@ -4,3 +4,9 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/react';
 import '@testing-library/jest-dom';
+
+// For Music Player, jsdom does not support the elements.
+window.HTMLMediaElement.prototype.load = () => {};
+// window.HTMLMediaElement.prototype.play = () => {};
+window.HTMLMediaElement.prototype.pause = () => {};
+// window.HTMLMediaElement.prototype.addTextTrack = () => {};
