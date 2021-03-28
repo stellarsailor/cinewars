@@ -7,12 +7,9 @@ export default function useDialog() {
   const dialog = useSelector((state: RootState) => state.dialog);
   const dispatch = useDispatch();
 
-  const onSetDialog = useCallback(
-    (text: string) => { 
-      dispatch(setDialog(text));
-    },
-    [dispatch]
-  );
+  const onSetDialog = useCallback((text: string) => { 
+    dispatch(setDialog(text));
+  }, [dispatch]);
 
   return {
     dialog,

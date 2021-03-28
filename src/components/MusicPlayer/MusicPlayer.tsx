@@ -12,15 +12,15 @@ const useAudio = () => {
   useEffect(() => {
     const promise = playing ? audio.play() : audio.pause()
     if (promise !== undefined) {
-      promise.then(() => {}).catch(error => console.error);
+      promise.then(() => {}).catch(error => console.error)
     } 
   },[playing, audio])
 
   useEffect(() => {
-    audio.addEventListener('ended', () => setPlaying(false));
+    audio.addEventListener('ended', () => setPlaying(false))
 
     return () => {
-      audio.removeEventListener('ended', () => setPlaying(false));
+      audio.removeEventListener('ended', () => setPlaying(false))
     }
   },[audio])
 

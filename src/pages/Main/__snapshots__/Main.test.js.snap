@@ -3,10 +3,10 @@
 exports[`<Main /> matches snapshot 1`] = `
 <div>
   <div
-    class="sc-iwyYcG diVfFX"
+    class="sc-cxFLnm gwktlz"
   >
     <div
-      class="sc-idOhPF lbVZAh"
+      class="sc-dIUggk fJrAiu"
     >
       <div
         style="margin-left: 0px; margin-right: 0px; display: flex; flex-wrap: wrap; flex-grow: 0; flex-shrink: 0; align-items: normal; justify-content: center;"
@@ -15,32 +15,32 @@ exports[`<Main /> matches snapshot 1`] = `
           style="box-sizing: border-box; min-height: 1px; position: relative; padding-left: 0px; padding-right: 0px; width: 66.66666666666667%; flex-basis: 66.66666666666667%; flex-grow: 0; flex-shrink: 0; max-width: 66.66666666666667%; margin-left: 0%;"
         >
           <div
-            class="sc-dIUggk jUgLus"
+            class="sc-hHftDr faeNav"
             style="opacity: 0; transform: translateY(20px) translateZ(0);"
           >
             <div
-              class="sc-hHftDr ePQka-d"
+              class="sc-dmlrTW dOdrMR"
             >
               <table>
                 <thead>
                   <tr>
                     <th
-                      class="sc-bBXqnf kKsWNn"
+                      class="sc-iwyYcG bfZLxg"
                     >
                       Name
                     </th>
                     <th
-                      class="sc-bBXqnf kKsWNn"
+                      class="sc-iwyYcG bfZLxg"
                     >
                       Birth
                     </th>
                     <th
-                      class="sc-bBXqnf kKsWNn"
+                      class="sc-iwyYcG bfZLxg"
                     >
                       Height
                     </th>
                     <th
-                      class="sc-bBXqnf kKsWNn"
+                      class="sc-iwyYcG bfZLxg"
                     >
                       Mass
                     </th>
@@ -49,22 +49,22 @@ exports[`<Main /> matches snapshot 1`] = `
                 <tbody />
               </table>
               <div
-                class="sc-dmlrTW csAspt"
+                class="sc-kfzAmx exxZTu"
               >
                 <span
-                  class="sc-fKFyDc hlgfOM"
+                  class="sc-bBXqnf iggTDU"
                   disabled=""
                 >
                   &lt;
                    Prev
                 </span>
                 <span
-                  class="sc-kfzAmx jIEcjh"
+                  class="sc-fKFyDc fgZYWn"
                 >
                   1
                 </span>
                 <span
-                  class="sc-fKFyDc hlgfOM"
+                  class="sc-bBXqnf iggTDU"
                   disabled=""
                 >
                   Next 
@@ -77,7 +77,7 @@ exports[`<Main /> matches snapshot 1`] = `
       </div>
     </div>
     <div
-      class="sc-kEjbxe khGPtF"
+      class="sc-iqHYGH fIKHVg"
     >
       <div
         style="margin-left: 0px; margin-right: 0px; display: flex; flex-wrap: wrap; flex-grow: 0; flex-shrink: 0; align-items: normal; justify-content: center;"
@@ -86,14 +86,14 @@ exports[`<Main /> matches snapshot 1`] = `
           style="box-sizing: border-box; min-height: 1px; position: relative; padding-left: 0px; padding-right: 0px; width: 66.66666666666667%; flex-basis: 66.66666666666667%; flex-grow: 0; flex-shrink: 0; max-width: 66.66666666666667%; margin-left: 0%;"
         >
           <div
-            class="sc-iqHYGH ihcdgJ"
+            class="sc-crrsfI fVvzGI"
             style="opacity: 0; transform: translateY(20px) translateZ(0);"
           >
             <div
-              class="sc-dQppl eHjXOW"
+              class="sc-bqyKva hcGpwN"
             >
               <div
-                class="sc-crrsfI bYnux"
+                class="sc-dQppl lguPIz"
               >
                 <img
                   alt="stormtrooper's portrait"
@@ -102,7 +102,7 @@ exports[`<Main /> matches snapshot 1`] = `
                 />
               </div>
               <div
-                class="sc-bqyKva kmvbgE"
+                class="sc-kstrdz bRDbbd"
               >
                 <div
                   class="Typist "

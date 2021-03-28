@@ -4,7 +4,6 @@ import { motion } from "framer-motion"
 import { Row, Col } from "react-grid-system";
 import { CharacterProfile } from '../../types/CharacterProfile';
 import { useHistory } from 'react-router';
-import { Films } from '../../types/Films';
 import { Species } from '../../types/Species';
 import { Vehicles } from '../../types/Vehicles';
 import { Starships } from '../../types/Starships';
@@ -114,7 +113,7 @@ function CharacterDetail({
                           </TabDescription>
                         :
                           character.speciesData!.map((v: Species) => (
-                            <TabDescription>
+                            <TabDescription key={v.url}>
                               {v.name}
                             </TabDescription>
                         ))}
@@ -141,7 +140,7 @@ function CharacterDetail({
                           {character.starshipsData && character.starshipsData.length === 0 ?
                               <span> none </span>
                             : character.starshipsData && character.starshipsData.map((v: Starships) => (
-                              <span> {v.name} </span>
+                              <span key={v.url}> {v.name} </span>
                           ))}
                         </TabDescription>
                       </Col>
@@ -153,7 +152,7 @@ function CharacterDetail({
                           {character.vehiclesData && character.vehiclesData.length === 0 ?
                               <span> none </span>
                             : character.vehiclesData && character.vehiclesData.map((v: Vehicles) => (
-                              <span> {v.name} </span>
+                              <span key={v.url}> {v.name} </span>
                           ))}
                         </TabDescription>
                       </Col>

@@ -32,7 +32,7 @@ const initialState: ListState = {
 }
 
 // Reducer
-function ListReducer(state: any = initialState, action: ListAction) {
+function ListReducer(state: ListState = initialState, action: ListAction) {
   switch (action.type) {
     case SET_PAGE:
       return { ...state, page: action.payload };

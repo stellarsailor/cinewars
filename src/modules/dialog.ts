@@ -21,7 +21,7 @@ const initialState: DialogState = {
 }
 
 // Reducer
-function DialogReducer(state: any = initialState, action: DialogAction) {
+function DialogReducer(state: DialogState = initialState, action: DialogAction) {
   switch (action.type) {
     case SET_DIALOG:
       return { ...state, text: action.payload };

@@ -10,7 +10,7 @@ export function composeDialog (data: CharacterProfile) {
 
   // name
   if(data.name === 'Darth Vader') {
-    return str = 'He is lord, Darth Vader.'
+    return str = "Lord Vader, What more can I say?"
   }
   str += 'name is <span style="font-weight:bold;">' + data.name + '</span> and has '
 

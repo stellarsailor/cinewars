@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import useList from './hooks/useList';
@@ -8,6 +8,7 @@ import AppLayout from './components/AppLayout';
 import Loader from './components/Loader';
 
 function App() {
+  
   const { status, initialFetch } = useList();
 
   useEffect(() => {

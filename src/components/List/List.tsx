@@ -6,7 +6,10 @@ import ListPane from './ListPane'
 import { CharacterProfile } from '../../types/CharacterProfile'
 
 export type ListProps = {
-  list: {page: number; characters: null | Array<CharacterProfile>};
+  list: {
+    page: number; 
+    characters: null | Array<CharacterProfile>
+  };
   status: 'idle' | 'pending' | 'error';
   onSetPage: (page: number) => void;
 }
@@ -84,7 +87,6 @@ function List({
 
 const ListContainer = styled.div`
   position: absolute;
-  //background-color: green; TODO:
   width: 100%;
   height: 50vh;
 `

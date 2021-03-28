@@ -5,7 +5,8 @@ export type LoaderProps = {
 }
 
 function Loader({ global }: LoaderProps) {
-  // when global is true, the loader spins the center of the web view, if not, it spins center of the parent's div
+  // when global is true, the loader spins on the center of the global web view, 
+  // if not, it spins on the center of the parent's div
   if(global){
     return (
       <GlobalContainer>
