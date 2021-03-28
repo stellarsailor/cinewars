@@ -38,7 +38,6 @@ function Character() {
     initialFetch()
   },[params, onSetDialog])
 
-  // it should be loading indicator when character page is being loaded, but due to animation it hinders user experience.
   if(loading) return <Loader global />
 
   return (
