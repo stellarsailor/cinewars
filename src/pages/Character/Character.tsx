@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from 'react-router-dom'
 import styled from "styled-components"
+import { fetchChildren } from "../../api/fetchChildren"
 import { serverUrl } from "../../api/serverUrl"
 import CharacterDetail from "../../components/CharacterDetail"
 import DialogBox from "../../components/DialogBox"
@@ -25,9 +26,10 @@ function Character() {
       try {
         const res = await fetch(url)
         const data = await res.json()
+        const characterData = await fetchChildren(data)
 
         onSetDialog(composeDialog(data))
-        setCharacter(data)
+        setCharacter(characterData)
         setLoading(false)
       } catch (err) {
         console.log(err)
