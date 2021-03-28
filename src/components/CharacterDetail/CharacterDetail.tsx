@@ -4,6 +4,10 @@ import { motion } from "framer-motion"
 import { Row, Col } from "react-grid-system";
 import { CharacterProfile } from '../../types/CharacterProfile';
 import { useHistory } from 'react-router';
+import { Films } from '../../types/Films';
+import { Species } from '../../types/Species';
+import { Vehicles } from '../../types/Vehicles';
+import { Starships } from '../../types/Starships';
 
 export type CharacterDetailProps = {
   id: number,
@@ -33,7 +37,7 @@ function CharacterDetail({
                   <BackButtonText onClick={() => history.goBack()}> {`<`} Back </BackButtonText>
                 </BackButtonTab>
                 <Row nogutter>
-                  <Col xs={12} sm={12} md={6} lg={6}>
+                  <Col xs={12} sm={12} md={4} lg={4}>
                     <PortraitContainer>
                       <ImageWrapper>
                         { imageLoading && <ImageSkeleton /> }
@@ -48,47 +52,112 @@ function CharacterDetail({
                       <PortraitNameContainer>
                         {character.name}
                       </PortraitNameContainer>
+                      <PortraitFilmsContainer>
+                        { character.filmsData && (
+                          // randomly select only one film to show.
+                          <>
+                            from '{character.filmsData[Math.floor(Math.random() * character.filmsData.length)].title}'
+                          </>
+                        )}
+                      </PortraitFilmsContainer>
                     </PortraitContainer>
                   </Col>
-                  <Col xs={6} sm={6} md={3} lg={3}>
-                    <TabTitle>
-                      Height
-                    </TabTitle>
-                    <TabDescription>
-                      {character.height}
-                    </TabDescription>
-                    <TabTitle>
-                      Mass
-                    </TabTitle>
-                    <TabDescription>
-                      {character.mass}
-                    </TabDescription>
-                    <TabTitle>
-                      Birth Date
-                    </TabTitle>
-                    <TabDescription>
-                      {character.birth_year}
-                    </TabDescription>
-                  </Col>
-                  <Col xs={6} sm={6} md={3} lg={3}>
-                    <TabTitle>
-                      Hair Color
-                    </TabTitle>
-                    <TabDescription>
-                      {character.hair_color}
-                    </TabDescription>
-                    <TabTitle>
-                      Eye Color
-                    </TabTitle>
-                    <TabDescription>
-                      {character.eye_color}
-                    </TabDescription>
-                    <TabTitle>
-                      Skin Color
-                    </TabTitle>
-                    <TabDescription>
-                      {character.skin_color}
-                    </TabDescription>
+                  <Col xs={12} sm={12} md={8} lg={8}>
+                    <Row nogutter>
+                      <Col xs={4} sm={4} md={4} lg={4}>
+                        <TabTitle>
+                          Height
+                        </TabTitle>
+                        <TabDescription>
+                          {character.height}
+                        </TabDescription>
+                        <TabTitle>
+                          Mass
+                        </TabTitle>
+                        <TabDescription>
+                          {character.mass}
+                        </TabDescription>
+                        <TabTitle>
+                          Birth Date
+                        </TabTitle>
+                        <TabDescription>
+                          {character.birth_year}
+                        </TabDescription>
+                      </Col>
+                      <Col xs={4} sm={4} md={4} lg={4}>
+                        <TabTitle>
+                          Hair Color
+                        </TabTitle>
+                        <TabDescription>
+                          {character.hair_color}
+                        </TabDescription>
+                        <TabTitle>
+                          Eye Color
+                        </TabTitle>
+                        <TabDescription>
+                          {character.eye_color}
+                        </TabDescription>
+                        <TabTitle>
+                          Skin Color
+                        </TabTitle>
+                        <TabDescription>
+                          {character.skin_color}
+                        </TabDescription>
+                      </Col>
+                      <Col xs={4} sm={4} md={4} lg={4}>
+                        <TabTitle>
+                          Species
+                        </TabTitle>
+                        {character.speciesData && character.speciesData.length === 0 ?
+                          <TabDescription>
+                            Human
+                          </TabDescription>
+                        :
+                          character.speciesData!.map((v: Species) => (
+                            <TabDescription>
+                              {v.name}
+                            </TabDescription>
+                        ))}
+                        <TabTitle>
+                          Home World
+                        </TabTitle>
+                        {character.homeworld === '' ?
+                          <TabDescription>
+                            unknown
+                          </TabDescription>
+                        :
+                          <TabDescription>
+                            {character.homeworldData.name}
+                          </TabDescription>
+                        }
+                      </Col>
+                    </Row>
+                    <Row nogutter>
+                      <Col xs={12} sm={12} md={12} lg={12}>
+                        <TabTitle>
+                          Starships
+                        </TabTitle>
+                        <TabDescription>
+                          {character.starshipsData && character.starshipsData.length === 0 ?
+                              <span> none </span>
+                            : character.starshipsData && character.starshipsData.map((v: Starships) => (
+                              <span> {v.name} </span>
+                          ))}
+                        </TabDescription>
+                      </Col>
+                      <Col xs={12} sm={12} md={12} lg={12}>
+                        <TabTitle>
+                          Vehicles
+                        </TabTitle>
+                        <TabDescription>
+                          {character.vehiclesData && character.vehiclesData.length === 0 ?
+                              <span> none </span>
+                            : character.vehiclesData && character.vehiclesData.map((v: Vehicles) => (
+                              <span> {v.name} </span>
+                          ))}
+                        </TabDescription>
+                      </Col>
+                    </Row>
                   </Col>
                 </Row>
               </DetailPane>
@@ -102,7 +171,6 @@ function CharacterDetail({
 
 const DetailContainer = styled.div`
   position: absolute;
-  //background-color: green; TODO:
   width: 100%;
   min-height: 50vh;
 `
@@ -123,16 +191,16 @@ const DetailPane = styled.div`
 
 const BackButtonTab = styled.div`
   width: 100%;
-  height: 60px;
+  height: 3.2rem;
   margin-top: 1rem;
   @media (max-width: 768px) {
-    height: 30px;
+    height: 1.6rem;
   }
 `
 
 const BackButtonText = styled.span`
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin-left: 1rem;
   @media (max-width: 768px) {
     font-size: 1.2rem;
@@ -152,8 +220,8 @@ const PortraitContainer = styled.div`
 `
 
 const ImageWrapper = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   @media (max-width: 768px) {
     width: 100px;
     height: 100px;
@@ -168,31 +236,43 @@ const ImageSkeleton = styled.div`
 `
 
 const PortraitNameContainer = styled.div`
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   @media (max-width: 768px) {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+`
+
+const PortraitFilmsContainer = styled.div`
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  font-style: italic;
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+    margin-top: 0rem;
   }
 `
 
 const TabTitle = styled.div`
-  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  font-size: 0.8rem;
   font-weight: bold;
   color: gray;
-  margin-left: 2rem;
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.6rem;
+    margin-top: 0.4rem;
   }
 `
 
-const TabDescription = styled.div`
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  margin-left: 2rem;
+const TabDescription = styled.span`
+  margin-left: 1rem;
+  font-size: 1.2rem;
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
 `
 

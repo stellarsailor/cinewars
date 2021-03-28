@@ -53,7 +53,7 @@ const TextBoxContainer = styled(motion.div)`
   z-index: 10;
 
   @media (max-width: 768px) {
-    bottom: 4rem;
+    bottom: 15vh;
   }
 `
 
@@ -98,7 +98,7 @@ const ScriptTextBox = styled.div`
 
   @media (max-width: 768px) {
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 `
 
