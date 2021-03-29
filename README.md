@@ -45,7 +45,7 @@ Character Page
   > I managed state of a page number, character list of the page, and dialogue text with Redux. 
   I prefer to use DUCKS pattern, but I am willing to learn more about other global state management style or other libraries like MobX, Constate and Recoil.
 - [x] Custom Header Logo Image / Favicon
-- [x] Responsive and compatible with various browser(Chrome, Safari, Edge, and Samsung Internet, however, Firefox has [minor issue](#issues).)
+- [x] Responsive and compatible with various browsers(Chrome, Safari, Edge, and Samsung Internet, however, Firefox has a [minor issue](#issues).)
 
   > 4k might not compatible.
 
@@ -61,14 +61,16 @@ Character Page
 
 ![Imgur](https://i.imgur.com/eDiLepi.png)
 
+- [x] Testing code for view pages
+
 ## Issues
 - [ ] iOS Safari audio player has a bug
 
   > I guess it is due to Safari's policy related to user interaction. 
-- [ ] When loader size is inherit by parents, it resizes viewport and sometimes makes scrolls. 
+- [ ] When loader size is inherit by parents, it resizes viewport and occasionally makes scrolls. 
 
   > I guess it is due to `diplay: flex` and react-grid-system library.
-- [ ] In Firefox web, the main list table is not centered.
+- [ ] In Firefox, the main list table is not centered.
 
 ## Problem and solutions
 1. The fetched data doesn't have id column and I firstly thought using sequential index as a key but `id: 17` data was missing. 
