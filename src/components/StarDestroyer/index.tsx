@@ -1,1 +1,1 @@
-export { default } from './StarDestroyer'
+export { default } from './StarDestroyer';

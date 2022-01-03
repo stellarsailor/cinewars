@@ -1,48 +1,44 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const useAudio = () => {
-  const [ audio ] = useState(new Audio('/audio/bgm.mp3'))
-  const [ playing, setPlaying ] = useState(false)
+  const [audio] = useState(new Audio('/audio/bgm.mp3'));
+  const [playing, setPlaying] = useState(false);
 
-  audio.volume = 0.33
+  audio.volume = 0.33;
 
-  const toggle: any = () => setPlaying(!playing)
-
-  useEffect(() => {
-    const promise = playing ? audio.play() : audio.pause()
-    if (promise !== undefined) {
-      promise.then(() => {}).catch(error => console.error)
-    } 
-  },[playing, audio])
+  const toggle: any = () => setPlaying(!playing);
 
   useEffect(() => {
-    audio.addEventListener('ended', () => setPlaying(false))
+    const promise = playing ? audio.play() : audio.pause();
+    if (promise) {
+      promise.then(() => {}).catch((error) => console.error);
+    }
+  }, [playing, audio]);
+
+  useEffect(() => {
+    audio.addEventListener('ended', () => setPlaying(false));
 
     return () => {
-      audio.removeEventListener('ended', () => setPlaying(false))
-    }
-  },[audio])
+      audio.removeEventListener('ended', () => setPlaying(false));
+    };
+  }, [audio]);
 
-  return [ playing, toggle ]
-}
+  return [playing, toggle];
+};
 
-export default function MusicPlayer () {
-    const [ playing, toggle ] = useAudio()
+export default function MusicPlayer() {
+  const [playing, toggle] = useAudio();
 
-    return (
-      <Container onClick={toggle}>
-        <img 
-          src={`/images/${
-            playing 
-            ? `audio_playing`
-            : `audio_pause`
-          }.png`} 
-          style={{width: '100%', height: '100%', position: 'relative'}} 
-          alt="music player indicator"
-        />
-      </Container>
-    )
+  return (
+    <Container onClick={toggle}>
+      <img
+        src={`/images/${playing ? `audio_playing` : `audio_pause`}.png`}
+        style={{ width: '100%', height: '100%', position: 'relative' }}
+        alt='music player indicator'
+      />
+    </Container>
+  );
 }
 
 const Container = styled.div`
@@ -58,4 +54,4 @@ const Container = styled.div`
     width: 2rem;
     height: 2rem;
   }
-`
+`;

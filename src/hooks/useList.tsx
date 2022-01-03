@@ -1,32 +1,35 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { serverUrl } from '../api/serverUrl';
 import { RootState } from '../modules';
-import { setPage, setCharacters } from '../modules/list'
+import { setPage, setCharacters } from '../modules/list';
 
 export default function useList() {
   const list = useSelector((state: RootState) => state.list);
   const dispatch = useDispatch();
-  
-  const [ status, setStatus ] = useState<'idle' | 'pending' | 'error'>('idle')
 
-  const onFetch = useCallback( async (page: number) => {
-    setStatus('pending')
-    let url = `${serverUrl}/people/?page=${page}`;
-    try {
-      const res = await fetch(url)
-      const data = await res.json()
+  const [status, setStatus] = useState<'idle' | 'pending' | 'error'>('idle');
 
-      dispatch(setCharacters(data.results))
-      setStatus('idle')
-    } catch (err) {
-      setStatus('error')
-    }
-  }, [dispatch])
+  const onFetch = useCallback(
+    async (page: number) => {
+      setStatus('pending');
+      let url = `${serverUrl}/people/?page=${page}`;
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        dispatch(setCharacters(data.results));
+        setStatus('idle');
+      } catch (err) {
+        setStatus('error');
+      }
+    },
+    [dispatch]
+  );
 
   const onSetPage = useCallback(
-    (page: number) => { 
-      onFetch(page)
+    (page: number) => {
+      onFetch(page);
       dispatch(setPage(page));
     },
     [dispatch, onFetch]
@@ -34,10 +37,10 @@ export default function useList() {
 
   const initialFetch = useCallback(
     (page: number) => {
-      onFetch(page)
+      onFetch(page);
     },
     [onFetch]
-  )
+  );
 
   return {
     list,

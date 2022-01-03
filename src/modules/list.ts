@@ -1,35 +1,33 @@
-import { CharacterProfile } from "../types/CharacterProfile";
+import { CharacterProfile } from '../types/CharacterProfile';
 
 // Action types - with const assertions
 const SET_PAGE = 'list/SET_PAGE' as const;
 const SET_CHARACTERS = 'list/SET_CHARACTERS' as const;
 
 // Actions
-export const setPage = (page: number) => ({ 
+export const setPage = (page: number) => ({
   type: SET_PAGE,
-  payload: page
+  payload: page,
 });
 
-export const setCharacters = (characters: Array<CharacterProfile>) => ({ 
+export const setCharacters = (characters: Array<CharacterProfile>) => ({
   type: SET_CHARACTERS,
-  payload: characters
+  payload: characters,
 });
 
 // Action object types
-type ListAction = 
-  | ReturnType<typeof setPage>
-  | ReturnType<typeof setCharacters>
+type ListAction = ReturnType<typeof setPage> | ReturnType<typeof setCharacters>;
 
 // Initial state
 type ListState = {
   page: number;
-  characters: Array<any>
-}
+  characters: Array<any>;
+};
 
 const initialState: ListState = {
   page: 1,
-  characters: []
-}
+  characters: [],
+};
 
 // Reducer
 function ListReducer(state: ListState = initialState, action: ListAction) {
@@ -43,4 +41,4 @@ function ListReducer(state: ListState = initialState, action: ListAction) {
   }
 }
 
-export default ListReducer
+export default ListReducer;

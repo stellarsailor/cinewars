@@ -1,21 +1,35 @@
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import MusicPlayer from '../MusicPlayer'
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import MusicPlayer from '../MusicPlayer';
 
 function Header() {
   return (
     <HeaderContainder>
       <MusicPlayer />
-      <Link to="/" style={{height: '75%'}}>
-        <img src="/images/logo_white.png" width="auto" height="100%" alt="main logo" />
+      <Link to='/' style={{ height: '75%' }}>
+        <img
+          src='/images/logo_white.png'
+          width='auto'
+          height='100%'
+          alt='main logo'
+        />
       </Link>
-      <a href="https://github.com/stellarsailor/cinewars" target="_blank" rel="noreferrer">
+      <a
+        href='https://github.com/stellarsailor/cinewars'
+        target='_blank'
+        rel='noreferrer'
+      >
         <GithubLogoContainer>
-          <img src="/images/logo_github.png" width="100%" height="100%" alt="github logo" />
+          <img
+            src='/images/logo_github.png'
+            width='100%'
+            height='100%'
+            alt='github logo'
+          />
         </GithubLogoContainer>
       </a>
     </HeaderContainder>
-  )
+  );
 }
 
 const HeaderContainder = styled.div`
@@ -28,7 +42,7 @@ const HeaderContainder = styled.div`
   @media (max-width: 768px) {
     height: 60px;
   }
-`
+`;
 
 const GithubLogoContainer = styled.div`
   position: absolute;
@@ -40,7 +54,7 @@ const GithubLogoContainer = styled.div`
   cursor: pointer;
   z-index: 30;
 
-  &:hover{
+  &:hover {
     opacity: 1;
   }
 
@@ -50,6 +64,6 @@ const GithubLogoContainer = styled.div`
     width: 1.5rem;
     height: 1.5rem;
   }
-`
+`;
 
-export default Header
+export default Header;

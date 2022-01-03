@@ -1,29 +1,22 @@
-import { 
-  render, 
-  fireEvent, 
-  waitFor 
-} from "@testing-library/react";
-import { 
-  createStore, 
-  applyMiddleware 
-} from 'redux'
-import { Provider } from 'react-redux'
+import { render, fireEvent, waitFor } from '@testing-library/react';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
 import Thunk from 'redux-thunk';
 import rootReducer from '../../modules';
-import App from '../../App'
-import Character from "./Character";
-import { serverUrl } from "../../api/serverUrl";
-import { createMemoryHistory } from 'history'
-import { Router, Route, Switch } from 'react-router-dom'
+import App from '../../App';
+import Character from './Character';
+import { serverUrl } from '../../api/serverUrl';
+import { createMemoryHistory } from 'history';
+import { Router, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 // to resolve cors problem (https://github.com/axios/axios/issues/1754)
 axios.defaults.adapter = require('axios/lib/adapters/http');
 
-const store = createStore(rootReducer, applyMiddleware(Thunk))
+const store = createStore(rootReducer, applyMiddleware(Thunk));
 
 describe('<Character />', () => {
   it('matches snapshot', () => {
-    const history = createMemoryHistory()
+    const history = createMemoryHistory();
     const utils = render(
       <Provider store={store}>
         <Router history={history}>
@@ -35,9 +28,9 @@ describe('<Character />', () => {
   });
 
   it('shows the loader indicator properly', () => {
-    const history = createMemoryHistory()
-    const route = '/character/1'
-    history.push(route)
+    const history = createMemoryHistory();
+    const route = '/character/1';
+    history.push(route);
 
     const utils = render(
       <Provider store={store}>
@@ -46,8 +39,8 @@ describe('<Character />', () => {
         </Router>
       </Provider>
     );
-    
-    utils.getByAltText("loader indicator")
+
+    utils.getByAltText('loader indicator');
   });
 
   // This should test one character's info properly, but it cannot fetch data from API due to "Error: Cross origin http://localhost forbidden". It can be solved by changing  fetch() to axios() like line 20 here, but the instruction said "Use the Fetch API". I left the function with fetch().
@@ -70,5 +63,4 @@ describe('<Character />', () => {
   //     utils.getByText(data.mass)
   //   })
   // })
-
-})
+});

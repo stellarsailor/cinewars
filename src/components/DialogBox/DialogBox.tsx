@@ -1,21 +1,20 @@
-import styled from 'styled-components'
-import { motion } from "framer-motion"
-import { Row, Col } from "react-grid-system";
-import Typist from 'react-typist'
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { Row, Col } from 'react-grid-system';
+import Typist from 'react-typist';
 import useDialog from '../../hooks/useDialog';
 import ReactHtmlParser from 'react-html-parser';
 
 export type DialogBoxProps = {
   content: string;
-}
+};
 
 function DialogBox({ content }: DialogBoxProps) {
-
   const { onSetDialog } = useDialog();
 
   return (
     <TextBoxContainer>
-      <Row justify="center" nogutter>
+      <Row justify='center' nogutter>
         <Col xs={11} sm={11} md={10} lg={8}>
           <MotionWrapper
             initial={{ opacity: 0, y: 20 }}
@@ -23,18 +22,24 @@ function DialogBox({ content }: DialogBoxProps) {
             transition={{ delay: 0.5, duration: 0.5 }}
           >
             <ScriptBox>
-              <ImageWrapper onClick={() => onSetDialog("D...Do not touch me, sir.")}>
-                <img 
-                  src="/images/stormtrooper.png" 
-                  style={{width: 'auto', height: '100%', position: 'relative'}} 
+              <ImageWrapper
+                onClick={() => onSetDialog('D...Do not touch me, sir.')}
+              >
+                <img
+                  src='/images/stormtrooper.png'
+                  style={{
+                    width: 'auto',
+                    height: '100%',
+                    position: 'relative',
+                  }}
                   alt="stormtrooper's portrait"
                 />
               </ImageWrapper>
-              <ScriptTextBox 
-                key={content} 
+              <ScriptTextBox
+                key={content}
                 //need key in text span to re-render when content is changed
               >
-                <Typist startDelay={1000} cursor={{show: false}}>
+                <Typist startDelay={1000} cursor={{ show: false }}>
                   {ReactHtmlParser(content)}
                 </Typist>
               </ScriptTextBox>
@@ -43,7 +48,7 @@ function DialogBox({ content }: DialogBoxProps) {
         </Col>
       </Row>
     </TextBoxContainer>
-  )
+  );
 }
 
 const TextBoxContainer = styled(motion.div)`
@@ -55,7 +60,7 @@ const TextBoxContainer = styled(motion.div)`
   @media (max-width: 768px) {
     bottom: 15vh;
   }
-`
+`;
 
 const MotionWrapper = styled(motion.div)`
   /* position: absolute; */
@@ -65,7 +70,7 @@ const MotionWrapper = styled(motion.div)`
   justify-content: center;
   align-items: center;
   z-index: 10;
-`
+`;
 
 const ImageWrapper = styled.div`
   height: 15rem;
@@ -76,7 +81,7 @@ const ImageWrapper = styled.div`
     height: 8rem;
     margin-top: -2rem;
   }
-`
+`;
 
 const ScriptBox = styled.div`
   background-color: rgba(0, 0, 0, 0.66);
@@ -89,7 +94,7 @@ const ScriptBox = styled.div`
   @media (max-width: 768px) {
     height: 6rem;
   }
-`
+`;
 
 const ScriptTextBox = styled.div`
   padding: 1rem;
@@ -100,6 +105,6 @@ const ScriptTextBox = styled.div`
     padding: 0.5rem;
     font-size: 0.8rem;
   }
-`
+`;
 
-export default DialogBox
+export default DialogBox;

@@ -1,24 +1,34 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export type LoaderProps = {
-  global: boolean
-}
+  global: boolean;
+};
 
 function Loader({ global }: LoaderProps) {
-  // when global is true, the loader spins on the center of the global web view, 
+  // when global is true, the loader spins on the center of the global web view,
   // if not, it spins on the center of the parent's div
-  if(global){
+  if (global) {
     return (
       <GlobalContainer>
-        <img src="/images/loader.png" width="40px" height="40px" alt="loader indicator" />
+        <img
+          src='/images/loader.png'
+          width='40px'
+          height='40px'
+          alt='loader indicator'
+        />
       </GlobalContainer>
-    )
+    );
   }
   return (
     <Container>
-      <img src="/images/loader.png" width="40px" height="40px" alt="loader indicator" />
+      <img
+        src='/images/loader.png'
+        width='40px'
+        height='40px'
+        alt='loader indicator'
+      />
     </Container>
-  )
+  );
 }
 
 const GlobalContainer = styled.div`
@@ -35,17 +45,17 @@ const GlobalContainer = styled.div`
   animation-name: spin;
   animation-duration: 5000ms;
   animation-iteration-count: infinite;
-  animation-timing-function: linear; 
+  animation-timing-function: linear;
 
   @keyframes spin {
     from {
-      transform:rotate(0deg);
+      transform: rotate(0deg);
     }
     to {
-      transform:rotate(360deg);
+      transform: rotate(360deg);
     }
   }
-`
+`;
 
 const Container = styled.div`
   height: 100%;
@@ -62,16 +72,16 @@ const Container = styled.div`
   animation-name: spin;
   animation-duration: 5000ms;
   animation-iteration-count: infinite;
-  animation-timing-function: linear; 
+  animation-timing-function: linear;
 
   @keyframes spin {
     from {
-      transform:rotate(0deg);
+      transform: rotate(0deg);
     }
     to {
-      transform:rotate(360deg);
+      transform: rotate(360deg);
     }
   }
-`
+`;
 
-export default Loader
+export default Loader;

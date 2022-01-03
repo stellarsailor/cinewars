@@ -1,1 +1,1 @@
-export { default } from './Earth'
+export { default } from './Earth';
